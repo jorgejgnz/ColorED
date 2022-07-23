@@ -43,7 +43,7 @@ The data generator in charge of providing each batch performs the following task
 
 [Albumentations](https://github.com/albumentations-team/albumentations) is used to do data augmentation to the original images. It have been used scaling, rotation and displacement transformations but none affecting color.
 
-## Modelo
+## Model
 
 ### Encoder
 
@@ -55,21 +55,25 @@ The decoder is symmetrical to the encoder. It consists of 3 blocks of 2 convolut
 
 ![Encoder-Decoder used for colorization](imgs/model.png)
 
-## Pruebas
+## Tests
 
 To check that the network learns correctly, a callback has been implemented. It shows, every 10 epochs, a comparison between an original color image, a grayscale image and an inferred color image.
 
 To check that no error has been made in the image processing, a simplified model has been created, disabling the data augmentation transformations and reducing the size of the images to 64x64 pixels, using only the first image of the dataset for training. This way the network memorizes very quickly the colors of that image. With this test we have been able to clearly observe how the network learns the colors of a single picture.
 
-![Color memorization for one single image.](imgs/mem.png)
+<p align="center">
+<img src="imgs/mem.png" width="400" />
+</p>
 
-## Resultados
+## Results
 
 If we use all the images, the network gives a sepia or brownish hue to all the images since brown is the most common color, without generating vivid colors. This may be due to the fact that the dataset has very varied images, although using a dataset composed of images of airplanes, with little variability, the problem persists, giving a bluish hue due to the presence of mostly blue colors in the images of this other dataset.
 
 In addition, vivid colors require extreme values in some color channel. For an activation function to return extreme values usually requires updating weights many times. Therefore, in this type of networks, it is to be expected to obtain faint colors if we do not let the network learn for enough epochs. In this case, after 200 epochs, we obtain the following results.
 
-![Color prediciotn over some test samples.](imgs/saturation2.drawio.png)
+<p align="center">
+<img src="imgs/saturation2.drawio.png" width="400" />
+</p>
 
 After epoch 25, the network has learned to always use the most probable color, lowering the loss but worsening the accuracy. From epoch 150 onwards, the network learns to improve the accuracy that would be obtained by random coloring. From this point on, both loss and accuracy follow a trend that indicates that it could improve if it were allowed to train for more epochs. In any case, this trend is so slight that both the drop in loss and the improvement in accuracy occur in very small ranges even after 200 epochs.
 

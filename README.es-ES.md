@@ -61,7 +61,9 @@ Para comprobar que la red aprende correctamente se ha implementado un callback q
 
 Para comprobar que no se ha cometido ningún fallo en el tratamiento de las imágenes, se ha creado un modelo simplificado, desactivado las transformaciones de data augmentation y reducido el tamaño del las imágenes a 64x64 píxeles, usando para training únicamente la primera imagen del dataset. Así la red memoriza muy rápidamente los colores de esa imagen. Con esta prueba hemos podido observar claramente cómo la red aprende los colores de una única foto.
 
-![Memorización del color de una única imagen](imgs/mem.png)
+<p align="center">
+<img src="imgs/mem.png" width="400" />
+</p>
 
 ## Resultados
 
@@ -69,7 +71,9 @@ Si usamos todas las imágenes, la red da una tonalidad sepia o marrón a todas l
 
 Además, los colores vivos requieren valores extremos en algún canal de color. Que una función de activación devuelva valores extremos requiere, por lo general, actualizar el peso de su neurona muchas veces. Por esto, en este tipo de redes es esperable obtener colores tenues si no dejamos que la red aprenda durante suficientes espochs. En este caso, después de 200 epochs, obtenemos los siguientes resultados.
 
-![Predicción de color sobre muestras de test](imgs/saturation2.drawio.png)
+<p align="center">
+<img src="imgs/saturation2.drawio.png" width="400" />
+</p>
 
 Después de la epoch 25, la red ha aprendido a usar siempre el color más probable, bajando el loss pero empeorando la precisión. A partir de la epoch 150 la red aprende a mejorar la precisión que se obtendría coloreando aleatoriamente. Desde ese momento, tanto la loss como la precisión siguen una tendencia que nos indica que puede mejorar si se dejase entrenar por más epochs. En cualquier caso, esta tendencia es tan leve que tanto la bajada de loss como la mejora en la precisión se dan en rangos muy pequeños aun después de 200 epochs.
 
