@@ -13,7 +13,7 @@ Se ha seguido el siguiente artículo como referencia:
 
 Para facilitar la inferencia del color por parte del decoder, a los filtros de cada píxel de la última capa convolucional se les concatena la salida de una InceptionResNet preentrenada con ImageNet. De esta manera, incluimos la información semántica de la imagen.
 
-Para esta tarea se ha usado como base el [código proporcionado en la asignatura]((https://github.com/RParedesPalacios/ComputerVisionLab/blob/master/src/colorization.py)).
+Para esta tarea se ha usado como base el [código proporcionado en la asignatura](https://github.com/RParedesPalacios/ComputerVisionLab/blob/master/src/colorization.py).
 
 ## Datos
 
